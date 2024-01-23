@@ -1,0 +1,11 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: foo-tenant
+  namespace: foo
+spec:
+  destinations:
+    - namespace: foo
+      server: "https://kubernetes.default.svc"
+  sourceNamespaces:
+    - foo
