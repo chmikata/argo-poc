@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-application
+  namespace: foo
+spec:
+  project: foo-tenant
+  destination:
+    namespace: foo-dest
+    server: https://kubernetes.default.svc
+  source:
+    path: manifests
+    repoURL: https://github.com/chmikata/argo-poc.git
+    targetRevision: main
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
